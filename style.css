@@ -1,0 +1,136 @@
+/* O clasă în CSS nu este un bloc de cod, ci un selector pe care îl poți folosi pentru a stiliza mai multe elemente HTML deodată. */
+
+/*backdrop-filter: blur(3px);
+Această proprietate CSS aplică un efect vizual de filtrare asupra fundalului unui element, adică modifică aspectul elementelor din spatele elementului curent.
+
+🔹 Valori posibile pentru backdrop-filter
+Aceasta poate lua mai mulți filtri, iar blur(3px) este doar unul dintre ei:
+
+blur(3px) → Estompează fundalul cu un efect de blur de 3px.
+
+brightness(150%) → Face fundalul mai luminos.
+
+contrast(80%) → Reduce contrastul fundalului.
+
+grayscale(100%) → Transformă fundalul în alb-negru.
+
+opacity(50%) → Face fundalul semi-transparent.
+
+Se pot combina filtre, ex:
+backdrop-filter: blur(5px) brightness(120%);
+🛠 Când se folosește?
+Pentru efecte de sticlă înghețată (glassmorphism), cum ar fi meniurile transparente.
+
+În modaluri, pentru a estompa fundalul din spate.
+
+Pentru efecte vizuale mai atractive pe pagini web moderne.
+
+⚠️ Notă: Funcționează doar pe elemente care au o culoare de fundal semi-transparentă (rgba sau transparent).*/
+
+/* z-index: 5;
+Aceasta definește ordinea de suprapunere a unui element în raport cu alte elemente.
+
+🔹 Valori posibile pentru z-index
+auto → Folosește valoarea implicită a părintelui.
+
+Un număr pozitiv (ex: z-index: 5;) → Elementul va fi afișat peste elementele cu z-index mai mic.
+
+Un număr negativ (ex: z-index: -1;) → Elementul va fi afișat sub alte elemente cu z-index mai mare.
+
+🛠 Când se folosește?
+Pentru a aduce un element în față (deasupra altora).
+
+Pentru a trimite un element în spate (ex: imagini de fundal, layere).
+
+Pentru meniuri fixe, pop-up-uri, ferestre modale etc. */
+
+/* Tu ai pus display: flex; pe fiecare buton, dar nu pe containerul care le conține.
+
+ Flexbox trebuie aplicat pe container (adică pe .buttons), nu pe fiecare buton (.btn).
+
+ Cum trebuie să gândești?
+Imaginează-ți că ai o cutie (div-ul .buttons) care conține 5 butoane.
+
+Dacă vrei să aranjezi frumos butoanele, trebuie să organizezi cutia, nu fiecare buton în parte.
+
+Flexbox organizează elementele COPII ale containerului, nu containerul în sine. */
+
+h1 {
+  font-family: "Kablammo", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "MORF" 9;
+  text-align: center;
+  font-size: 70px;
+  color: aliceblue;
+}
+
+body {
+  line-height: 10px;
+  background-color: #17411e;
+}
+
+/*Selectează doar butoanele care au clasa .btn și sunt în interiorul div-ului .buttons
+*/
+/* display: flex;
+  /*Ca să folosești flex-direction, trebuie mai întâi să activezi Flexbox pe containerul părinte cu display: flex;.*/
+/*flex-direction: column;*/
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(6, 70px);
+  grid-template-rows: repeat(6, 1px);
+  gap: 190px;
+  margin-top: 125px;
+  margin-left: 25px;
+}
+
+.buttons .btn {
+  width: 250px; /* Lățime fixă pentru toate butoanele */
+  height: 90px; /* Înălțime fixă (opțional) */
+  font-size: 3rem;
+  font-weight: 400;
+  /* padding: 50px; /*deranjeaza textul din butoane astfel nu mai e in centru,
+  stergandul practic textul va fi acum in mijloc yuppi*/
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* .btn1 {
+  background: url("./assets/canva_pictures.jpg");
+} */
+
+.hidden {
+  display: none;
+}
+
+.img {
+  display: block;
+  height: 90px;
+  width: 250px;
+}
+
+.overlay {
+  width: 100%;
+  height: 200%;
+  /*fundal negru semi-transparent*/
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.img {
+  height: 90px;
+  width: 250px;
+  /*daca am position relative dupa pot sa setez imaginea sa se deplaseze in mai multe directi cu ajutorul la top left etc in functie de fluxul paginii*/
+  position: relative;
+  top: -56.5px;
+  left: -5.9px;
+  display: block;
+  /*border radius merge aplicat si pe imagini aparent*/
+  border-radius: 30px;
+  display: grid;
+}
